@@ -7,19 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D430364295B0323006B2A8E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D430363295B0323006B2A8E /* SettingsView.swift */; };
 		5DB3E8E82958468100188F87 /* HuaweiRtMonitor2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB3E8E72958468100188F87 /* HuaweiRtMonitor2App.swift */; };
 		5DB3E8EA2958468100188F87 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB3E8E92958468100188F87 /* ContentView.swift */; };
 		5DB3E8EC2958468200188F87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DB3E8EB2958468200188F87 /* Assets.xcassets */; };
 		5DB3E8EF2958468200188F87 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DB3E8EE2958468200188F87 /* Preview Assets.xcassets */; };
+		5DB3E8F7295846D200188F87 /* HuaweiAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB3E8F6295846D200188F87 /* HuaweiAPI.swift */; };
+		5DB3E8FA29585F9500188F87 /* SWXMLHash in Frameworks */ = {isa = PBXBuildFile; productRef = 5DB3E8F929585F9500188F87 /* SWXMLHash */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D430363295B0323006B2A8E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		5D4659B429598FA3007A8F9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5DB3E8E42958468100188F87 /* HuaweiRtMonitor2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HuaweiRtMonitor2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DB3E8E72958468100188F87 /* HuaweiRtMonitor2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuaweiRtMonitor2App.swift; sourceTree = "<group>"; };
 		5DB3E8E92958468100188F87 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5DB3E8EB2958468200188F87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5DB3E8EE2958468200188F87 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5DB3E8F02958468200188F87 /* HuaweiRtMonitor2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HuaweiRtMonitor2.entitlements; sourceTree = "<group>"; };
+		5DB3E8F6295846D200188F87 /* HuaweiAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuaweiAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DB3E8FA29585F9500188F87 /* SWXMLHash in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,11 +59,14 @@
 		5DB3E8E62958468100188F87 /* HuaweiRtMonitor2 */ = {
 			isa = PBXGroup;
 			children = (
+				5D4659B429598FA3007A8F9E /* Info.plist */,
 				5DB3E8E72958468100188F87 /* HuaweiRtMonitor2App.swift */,
 				5DB3E8E92958468100188F87 /* ContentView.swift */,
+				5D430363295B0323006B2A8E /* SettingsView.swift */,
 				5DB3E8EB2958468200188F87 /* Assets.xcassets */,
 				5DB3E8F02958468200188F87 /* HuaweiRtMonitor2.entitlements */,
 				5DB3E8ED2958468200188F87 /* Preview Content */,
+				5DB3E8F6295846D200188F87 /* HuaweiAPI.swift */,
 			);
 			path = HuaweiRtMonitor2;
 			sourceTree = "<group>";
@@ -85,6 +95,9 @@
 			dependencies = (
 			);
 			name = HuaweiRtMonitor2;
+			packageProductDependencies = (
+				5DB3E8F929585F9500188F87 /* SWXMLHash */,
+			);
 			productName = HuaweiRtMonitor2;
 			productReference = 5DB3E8E42958468100188F87 /* HuaweiRtMonitor2.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +126,9 @@
 				Base,
 			);
 			mainGroup = 5DB3E8DB2958468100188F87;
+			packageReferences = (
+				5DB3E8F829585F9500188F87 /* XCRemoteSwiftPackageReference "SWXMLHash" */,
+			);
 			productRefGroup = 5DB3E8E52958468100188F87 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,6 +155,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DB3E8F7295846D200188F87 /* HuaweiAPI.swift in Sources */,
+				5D430364295B0323006B2A8E /* SettingsView.swift in Sources */,
 				5DB3E8EA2958468100188F87 /* ContentView.swift in Sources */,
 				5DB3E8E82958468100188F87 /* HuaweiRtMonitor2App.swift in Sources */,
 			);
@@ -265,6 +283,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = HuaweiRtMonitor2/HuaweiRtMonitor2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -272,6 +291,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"HuaweiRtMonitor2/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HuaweiRtMonitor2/Info.plist;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -290,6 +311,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = HuaweiRtMonitor2/HuaweiRtMonitor2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -297,6 +319,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"HuaweiRtMonitor2/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HuaweiRtMonitor2/Info.plist;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -332,6 +356,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5DB3E8F829585F9500188F87 /* XCRemoteSwiftPackageReference "SWXMLHash" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/drmohundro/SWXMLHash.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5DB3E8F929585F9500188F87 /* SWXMLHash */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DB3E8F829585F9500188F87 /* XCRemoteSwiftPackageReference "SWXMLHash" */;
+			productName = SWXMLHash;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5DB3E8DC2958468100188F87 /* Project object */;
 }
