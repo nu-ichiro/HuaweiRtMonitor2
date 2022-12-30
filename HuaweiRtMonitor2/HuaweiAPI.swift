@@ -2,7 +2,7 @@
 //  HuaweiAPI.swift
 //  HuaweiRtMonitor2
 //
-//  Created by 中橋 一朗 on 2022/12/25.
+//  Created by NAKAHASHI Ichiro on 2022/12/25.
 //
 
 // Based on API information obtained here: https://github.com/Salamek/huawei-lte-api
