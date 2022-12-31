@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5D1C4D9B295F7AE8004F6159 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5D1C4D9A295F7AE8004F6159 /* README.md */; };
+		5D3678EB29602BC600DA2539 /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D3678EA29602BC600DA2539 /* screenshot.png */; };
 		5D430364295B0323006B2A8E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D430363295B0323006B2A8E /* SettingsView.swift */; };
 		5DB3E8E82958468100188F87 /* HuaweiRtMonitor2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB3E8E72958468100188F87 /* HuaweiRtMonitor2App.swift */; };
 		5DB3E8EA2958468100188F87 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB3E8E92958468100188F87 /* ContentView.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		5D1C4D9A295F7AE8004F6159 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5D3678EA29602BC600DA2539 /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot.png; sourceTree = "<group>"; };
 		5D430363295B0323006B2A8E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		5D4659B429598FA3007A8F9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5DB3E8E42958468100188F87 /* HuaweiRtMonitor2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HuaweiRtMonitor2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +47,7 @@
 		5DB3E8DB2958468100188F87 = {
 			isa = PBXGroup;
 			children = (
+				5D3678EA29602BC600DA2539 /* screenshot.png */,
 				5D1C4D9A295F7AE8004F6159 /* README.md */,
 				5DB3E8E62958468100188F87 /* HuaweiRtMonitor2 */,
 				5DB3E8E52958468100188F87 /* Products */,
@@ -149,6 +152,7 @@
 				5D1C4D9B295F7AE8004F6159 /* README.md in Resources */,
 				5DB3E8EF2958468200188F87 /* Preview Assets.xcassets in Resources */,
 				5DB3E8EC2958468200188F87 /* Assets.xcassets in Resources */,
+				5D3678EB29602BC600DA2539 /* screenshot.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
