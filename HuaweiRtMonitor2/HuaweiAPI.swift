@@ -99,9 +99,9 @@ class HuaweiRtSession {
 
     func close() async throws {
         let requestXML = """
-<?xml version="1.0" encoding="utf-8"?>
-<request><Logout>1</Logout></request>
-"""
+            <?xml version="1.0" encoding="utf-8"?>
+            <request><Logout>1</Logout></request>
+            """
 
         var req = URLRequest(url: URL(string: "\(rt_host)api/user/logout")!)
         req.httpMethod = "POST"
@@ -167,21 +167,20 @@ class HuaweiRtSession {
         return (downRate, upRate)
     }
     
-/*
- func reboot() {
-        
-        let headers: HTTPHeaders = [
-            "__RequestVerificationToken": csrf_token[0],
-            "Content-Type": "application/xml"
-        ]
+    func reboot() async throws {
         let requestXML = """
-<?xml version="1.0" encoding="utf-8"?>
-<request><Control>1</Control></request>
-"""
-        session.upload(requestXML.data(using: .utf8)!, to: rt_url + "api/device/control", headers: headers).response { response in
-            //debugPrint(response)
-        }
+            <?xml version="1.0" encoding="utf-8"?>
+            <request><Control>1</Control></request>
+            """
 
+        var req = URLRequest(url: URL(string: "\(rt_host)api/device/control")!)
+        req.httpMethod = "POST"
+        req.setValue(csrf_token[0], forHTTPHeaderField: "__RequestVerificationToken")
+        req.setValue("application/xml", forHTTPHeaderField: "Content-Type")
+        req.httpBody = requestXML.data(using: .utf8)
+        
+        let (_, _) = try await URLSession.shared.data(for: req)
+        //debugPrint(String(data: data, encoding: .utf8))
+        print("Rebooting...")
     }
-     */
 }

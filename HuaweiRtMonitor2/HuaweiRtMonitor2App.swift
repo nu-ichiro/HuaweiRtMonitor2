@@ -74,17 +74,16 @@ class RtMonitorController {
     var statusUpdateTimer: Timer?
     let rts = HuaweiRtSession()
     var msg = RtStatusMsg()
-    let semaphore = DispatchSemaphore(value: 0)
     var updateSuccess: Bool = false
     
     var timerCancellable: AnyCancellable?
     var updateInProgress: Bool = false
-
+    
     func start() {
         let statusBarButton = StatusItem!.button!
         statusBarButton.attributedTitle = statusString()
         //statusBarButton.action = #selector(AppDelegate.togglePopover(sender:))
-
+        
         timerCancellable = Timer.publish(every: 5, on: .main, in: .common)
             .autoconnect()
             .sink { _ in
@@ -97,7 +96,8 @@ class RtMonitorController {
     
     
     func updateStatus() {
-        
+        let semaphore = DispatchSemaphore(value: 0)
+
         if updateInProgress {
             print("Status update is still in progress.")
             return
@@ -109,7 +109,7 @@ class RtMonitorController {
         self.msg.up = 0
         self.msg.rssi = "0dB"
         self.msg.sinr = "0dB"
-
+        
         Task {
             do {
                 try await self.rts.connect(host:huaweiRtHost, userID:huaweiRtUserID, password:huaweiRtPassword)
@@ -134,13 +134,13 @@ class RtMonitorController {
             } catch {
                 print("Failed to obtain router status!")
             }
-            self.semaphore.signal()
-
+            semaphore.signal()
+            
         }
-
-        semaphore.wait() //(timeout: .now() + 4) //timeout in 4 secs
+        
+        semaphore.wait()
         updateInProgress = false
-                
+        
         RtStatus.downMbps = String(format:"%0.1f", Double(self.msg.down) * 8.0 / 1000000)
         RtStatus.upMbps = String(format:"%0.1f", Double(self.msg.up) * 8.0 / 1000000)
         RtStatus.rssi = self.msg.rssi
@@ -153,14 +153,14 @@ class RtMonitorController {
             up: Double(self.msg.up) * 8.0 / 1000000,
             sinr: Int(self.msg.sinr.replacingOccurrences(of: "dB", with: "")) ?? 0
         )
-
+        
         RtStatus.series.append(item)
         while RtStatus.series[0].timestamp.distance(to: currentTimeStamp) > RtStatusRetentionPeriod {
             RtStatus.series.remove(at:0)
         }
         
         StatusItem!.button!.attributedTitle = statusString()
-
+        
         if (self.msg.success) {
             RtStatus.errorMessage = ""
         } else {
@@ -174,25 +174,54 @@ class RtMonitorController {
         paraStyle.alignment = .right
         paraStyle.lineHeightMultiple = 0.7
         text.append(NSAttributedString(
-                string: "↓\(RtStatus.downMbps)M\n",
-                attributes: [
-                    .font: NSFont.menuBarFont(ofSize: 10),
-                    //.foregroundColor: NSColor.systemGreen,
-                    .baselineOffset: -6,
-                    .paragraphStyle: paraStyle
-                ]
-            ))
+            string: "↓\(RtStatus.downMbps)M\n",
+            attributes: [
+                .font: NSFont.menuBarFont(ofSize: 10),
+                //.foregroundColor: NSColor.systemGreen,
+                .baselineOffset: -6,
+                .paragraphStyle: paraStyle
+            ]
+        ))
         text.append(NSAttributedString(
-                string: "↑\(RtStatus.upMbps)M",
-                attributes: [
-                    .font: NSFont.menuBarFont(ofSize: 10),
-                    //.foregroundColor: NSColor.systemBlue,
-                    .baselineOffset: -6,
-                    .paragraphStyle: paraStyle
-                ]
-            ))
+            string: "↑\(RtStatus.upMbps)M",
+            attributes: [
+                .font: NSFont.menuBarFont(ofSize: 10),
+                //.foregroundColor: NSColor.systemBlue,
+                .baselineOffset: -6,
+                .paragraphStyle: paraStyle
+            ]
+        ))
         return text;
     }
+    
+    func reboot() {
+        let semaphore = DispatchSemaphore(value: 0)
+
+        let alert = NSAlert()
+        alert.alertStyle = NSAlert.Style.warning
+        alert.messageText = "Reboot Router"
+        alert.informativeText = "Are you sure?"
+        
+        alert.addButton(withTitle: "Ok")
+        alert.addButton(withTitle: "Cancel")
+        
+        let response = alert.runModal()
+        if response != .alertFirstButtonReturn {
+            return
+        }
+ 
+        Task {
+            do {
+                try await self.rts.connect(host:huaweiRtHost, userID:huaweiRtUserID, password:huaweiRtPassword)
+                try await self.rts.reboot()
+            } catch {
+                
+            }
+            semaphore.signal()
+        }
+        semaphore.wait()
+    }
+    
 }
 
 var SettingsWindow: NSWindow?
@@ -224,9 +253,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         MonitorCtl.start()
     }
     
+    /*
     @objc func showSettingsWindow() {
         settingsWindow.display()
     }
+    */
     
     @objc func togglePopover(sender: AnyObject) {
         //debugPrint("Menu Clicked")

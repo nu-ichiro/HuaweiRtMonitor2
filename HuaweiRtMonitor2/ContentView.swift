@@ -76,6 +76,7 @@ struct ContentView: View {
                         .foregroundColor(Color.red)
                 }
                 Spacer()
+                /*
                 Button(action: {
                     NSApp.activate(ignoringOtherApps: true)
                     SettingsWindow?.makeKeyAndOrderFront(self)
@@ -85,6 +86,19 @@ struct ContentView: View {
                 Button(action: {NSApplication.shared.terminate(nil)}) {
                     Text("Quit")
                 }
+                 */
+                Menu {
+                    Button("Reboot...", action: {
+                        MonitorCtl.reboot()
+                    } )
+                    Button("Settings...", action: {
+                        NSApp.activate(ignoringOtherApps: true)
+                        SettingsWindow?.makeKeyAndOrderFront(self)
+                    } )
+                    Button("Quit...", action: {NSApplication.shared.terminate(nil)} )
+                } label: {
+                    Image(systemName: "gearshape")
+                }.frame(width:45, alignment: .leading)
             }
         }
         .padding()
@@ -96,5 +110,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environmentObject(rtStatus)
+            .frame(width: 300, height: 180)
     }
 }
