@@ -103,6 +103,11 @@ class HuaweiRtSession {
             <request><Logout>1</Logout></request>
             """
 
+        if csrf_token.count == 0 {
+            print("CSRF token bag is empty. Session already expired?")
+            return
+        }
+        
         var req = URLRequest(url: URL(string: "\(rt_host)api/user/logout")!)
         req.httpMethod = "POST"
         req.setValue(csrf_token[0], forHTTPHeaderField: "__RequestVerificationToken")

@@ -29,9 +29,7 @@ struct ContentView: View {
                 .foregroundStyle(.blue)
                 .interpolationMethod(.monotone)
             }
-            //.clipped()
             .chartXScale(domain: Date().addingTimeInterval(-1.0 * RtStatusRetentionPeriod)...Date())
-            //.chartYScale(domain: 0...20)
             HStack {
                 Text("Down \(self.rtStatus.downMbps) Mbps")
                     .fontWeight(.bold)
@@ -50,7 +48,6 @@ struct ContentView: View {
                 .interpolationMethod(.monotone)
             }
             .frame(height: 25.0)
-            //.clipped()
             .chartXAxis {
                 AxisMarks {
                     AxisGridLine()
@@ -76,17 +73,6 @@ struct ContentView: View {
                         .foregroundColor(Color.red)
                 }
                 Spacer()
-                /*
-                Button(action: {
-                    NSApp.activate(ignoringOtherApps: true)
-                    SettingsWindow?.makeKeyAndOrderFront(self)
-                }) {
-                    Image(systemName: "gearshape")
-                }
-                Button(action: {NSApplication.shared.terminate(nil)}) {
-                    Text("Quit")
-                }
-                 */
                 Menu {
                     Button("Reboot...", action: {
                         MonitorCtl.reboot()
@@ -95,7 +81,7 @@ struct ContentView: View {
                         NSApp.activate(ignoringOtherApps: true)
                         SettingsWindow?.makeKeyAndOrderFront(self)
                     } )
-                    Button("Quit...", action: {NSApplication.shared.terminate(nil)} )
+                    Button("Quit", action: {NSApplication.shared.terminate(nil)} )
                 } label: {
                     Image(systemName: "gearshape")
                 }.frame(width:45, alignment: .leading)
